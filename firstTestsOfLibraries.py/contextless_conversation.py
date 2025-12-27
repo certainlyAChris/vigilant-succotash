@@ -1,0 +1,57 @@
+from sys import argv
+from openai import OpenAI
+client = OpenAI()
+
+def prompt_params():
+    global instructions
+    global reasoningEffort
+    global developerCommand
+
+    if len(argv)<2:
+        instructions = ""
+    else:
+        instructions = argv[1]
+
+    if len(argv)<3:
+        reasoningEffort = "medium"
+    else:
+        reasoningEffort = argv[3]
+
+    if len(argv)<4:
+        developerCommand = ""
+    else:
+        developerCommand = argv[3]
+
+prompt_params()
+
+
+
+prompt = ""
+
+while (True):
+
+    prompt = input("\nprompt: ")
+    if prompt=="quit":
+        break
+
+    response = client.responses.create(
+
+        model="gpt-5-nano",
+        input=[
+            {
+                "role": "developer",
+                "content": developerCommand
+            },
+
+            {
+                "role": "user",
+                "content": prompt
+            }
+
+        ],
+        reasoning={"effort": reasoningEffort},
+        
+    )
+
+    print(response.output_text)
+
