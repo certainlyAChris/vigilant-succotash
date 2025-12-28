@@ -1,0 +1,17 @@
+{
+    "tools_list": [
+    {
+        "type": "function",
+
+        "name": "get_time_date",
+
+        "description": "Get the current time and date. There are no parameters",
+
+        "parameters": {},
+
+        "strict": false
+
+
+    }
+    ]
+}
