@@ -6,14 +6,16 @@ stream = client.responses.create(
     input=[
         {
             "role": "user",
-            "content": "Say 'Give me a good explanation of the enistein field equations",
+            "content": "Give me a good explanation of the enistein field equations",
         },
     ],
     stream=True,
 )
-try:
-    for event in stream:
-        if event.type == "response.output_text.delta":
-            print(event.delta, end="")
-except:
-    pass
+#try:
+for event in stream:
+    #print(event.type)
+    if event.type == "response.output_text.delta":
+        print(event.delta, end="")
+    #print("\n--------------------------------------------------------------------------------\n")
+#except:
+#    pass
